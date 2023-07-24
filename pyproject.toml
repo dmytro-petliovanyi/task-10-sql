@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "task-10-sql"
+version = "0.1.0"
+description = ""
+authors = ["Dmytro Petliovanyi <petliovany@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pre-commit = "^3.2.2"
+isort = "^5.12.0"
+mypy = "^1.2.0"
+flake8 = "^6.0.0"
+pytest = "^7.3.1"
+typer = "^0.7.0"
+psycopg2-binary = "^2.9.6"
+logging = "^0.4.9.6"
+fastapi = "^0.98.0"
+fastapi-sqlalchemy = "^0.2.1"
+uvicorn = "^0.22.0"
+gunicorn = "^20.1.0"
+httpx = "^0.24.1"
+sqlalchemy = {extras = ["mypy"], version = "^2.0.19"}
+alembic = "^1.11.1"
+fastapi-cache2 = {extras = ["redis"], version = "^0.2.1"}
+types-redis = "^4.6.0.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -1,0 +1,36 @@
+version: "3"
+
+services:
+  fastapi:
+    build:
+      dockerfile: ./my_app/Dockerfile
+    container_name: fastapi
+    env_file:
+      - .env-dev
+    ports:
+      - "8001:8000"
+    depends_on:
+      - pgdb
+
+  pgdb:
+    image: postgres
+    env_file: .env-dev
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    container_name: pgdb
+
+  test_runner:
+    build:
+      context: .
+    depends_on:
+      - pgdb
+      - fastapi
+    volumes:
+      - .:/app
+    command: [ "pytest" ]
+    container_name: test_runner
+
+volumes:
+  db-data:
